@@ -13,7 +13,8 @@ class Page {
     getSearchData() {
         const value = _(".form__search-bar").value
 
-        fetch(`${this.searchUrl}?q=${value.toLowerCase()}`)
+        if(value) {
+            fetch(`${this.searchUrl}?q=${value.toLowerCase()}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -34,6 +35,16 @@ class Page {
                     _(".result").appendChild(block)
                 })
             })
+        } else {
+            _("#alert-wrapper").innerHTML = `
+            <div class="alert alert-warning alert-dismissible show fade error-alert" role="alert">
+                You should type something below.
+                <button type="button" class="btn-close close-button" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            `
+        }
+
+
     }
 }
 
