@@ -108,6 +108,8 @@ button, a, input:focus {
   min-height: calc(100vh - 90px);
   margin: 45px auto;
   padding: 20px;
+  position: relative;
+  overflow: hidden;
 }
 .main .form {
   margin: 0 auto;
@@ -139,6 +141,24 @@ button, a, input:focus {
 .main .form__search-bar::placeholder {
   color: #dbdbdb;
 }
+.main__user {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 100%;
+  transition: all 0.5s;
+}
+.main__search {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  overflow-y: auto;
+  padding: 20px;
+}
 
 .result {
   width: 100%;
@@ -166,7 +186,7 @@ button, a, input:focus {
 }
 .result__img {
   width: 100%;
-  background: #ca3e47;
+  height: 240px;
 }
 .result__nickname {
   text-align: center;
@@ -203,4 +223,12 @@ button, a, input:focus {
 .close-button {
   color: #ca3e47 !important;
   background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ca3e47'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat !important;
+}
+
+.show {
+  left: 0;
+}
+
+.hide {
+  left: -100%;
 }

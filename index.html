@@ -14,30 +14,25 @@
 <body>
     <aside class="header">
         <img src="img/github-icon.png" alt="Logo" class="header__logo">
-        <ul class="header__nav">
-            <button href="" class="header__link">Home</button>
-            <button href="" class="header__link">Info</button>
-        </ul>
         <button class="header__button">Get in touch</button>
     </aside>
 
     <main class="main">
         <div class="main__wrapper">
-            <div id="alert-wrapper">
-                <!-- alert -->
+            <div class="main__search">
+                <div id="alert-wrapper"></div>
+                <form class="form">
+                    <input class="form__search-bar" type="text" placeholder="Search account">
+                    <button class="form__submit" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <p class="result__querytext"></p>
+                <div class="result"></div>
             </div>
+            <div class="main__user"></div>
 
-            <form class="form">
-                <input class="form__search-bar" type="text" placeholder="Search account">
-                <button class="form__submit" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-            <p class="result__querytext"></p>
-            <div class="result">
-                <!-- rendered sections -->
-            </div>
+        </div>
 
     </main>
-    <footer> </footer>
 
     <script src="./js/index.js"></script>
 
