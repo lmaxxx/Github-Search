@@ -110,7 +110,3 @@ _("form").onsubmit = e => {
     e.preventDefault()
     page.getSearchData()
 }
-
-
-
-
