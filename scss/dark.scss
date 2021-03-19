@@ -4,7 +4,7 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "Blinker", sans-serif !important;
     background: #525252 !important;
 }
 
@@ -56,7 +56,7 @@ button, a, input:focus {
         }
     }
     &__button {
-        font-size: 1.2em;
+        font-size: 2vw;
         color: #fff;
         background: initial;
         padding: 12px 32px;
@@ -147,6 +147,8 @@ button, a, input:focus {
         top: 0;
         left: 100%;
         transition: all .5s;
+        padding: 20px;
+        overflow-y: auto;
     }
     &__search{
         position: absolute;
@@ -161,6 +163,53 @@ button, a, input:focus {
 
 }
 
+.head{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    &__img-wrapper {
+        width: 35%;
+    }
+    &__img {
+        width: 100%;
+    }
+    &__name {
+        text-align: center;
+        color: #fff;
+        font-size: 2vw;
+        margin-top: 5px;
+    }
+    &__button {
+        text-decoration: none;
+        background-color: #00eaff;
+        color: #fff;
+        text-align: center;
+        font-size: 1.8vw;
+        border: 0;
+        transition: .2s;
+        padding: 15px 0;
+        width: 100%;
+        &:hover {
+            background-color: #585cc4;
+            color: #fff;
+        }
+        
+    }
+    &__status {
+        ul {
+            padding: 0;
+        }
+        li {
+            font-size: 3.5vw;
+            color: #fff;
+            list-style: none;
+        }
+        strong {
+            color: #ca3e47;
+        }
+    }
+}
+
 .result {
     width: 100%;
     display: grid;
@@ -170,7 +219,8 @@ button, a, input:focus {
     justify-items: center;
     &__section {
         background: red;
-        width: 240px;
+        min-width: 240px;
+        width: 100%;
         background: #313131;
         display: flex;
         flex-direction: column;
@@ -186,7 +236,6 @@ button, a, input:focus {
     }
     &__img {
         width: 100%;
-        height: 240px;
     }
     &__nickname {
         text-align: center;
@@ -195,7 +244,7 @@ button, a, input:focus {
         text-overflow: ellipsis;
         padding: 10px;
         color: #fff;
-        font-size: 21px;
+        font-size: 25px;
         margin: 5px 0;
     }
     &__button {
@@ -206,8 +255,8 @@ button, a, input:focus {
         margin: 5px 0 10px 0;
         background: #00eaff;
         border: 0;
-        font-size: 18px;
         transition: .2s;
+        border: 0;
         color: #fff;
         &:hover, &:focus {
             background: #585cc4;
@@ -232,4 +281,44 @@ button, a, input:focus {
 
 .hide {
     left: -100%;
+}
+
+#back {
+    background: initial;
+    color: #ca3e47;
+    font-size: 2vw;
+    border: 0;
+    transition: .2s;
+    &:hover {
+        color: #941010;
+    }
+}
+
+.repos {
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.repo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    p {
+        margin: 0;
+        font-size: 1.3vw ;
+        color: #ca3e47;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.3vw;
+    }
+}
+
+.repo-title {
+    text-align: center;
+    color: #fff;
+    margin-top: 25px;
+    font-size: 3vw;
 }

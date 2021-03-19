@@ -5,7 +5,7 @@ const _ = (selector) => {
 class Page {
     constructor() {
         this.theme = "dark"
-        this.searchUrl = "https://api.github.com/search/users"
+        this.searchUrl = "https://api.github.com/search/users?client_id=537eb1ccd6cf3d86e0dd&secret_id=ed69e0ea1b0c18f1fff0f079bff42f0f72fbea09"
         this.userData = []
         this.searchData = []
     }
@@ -15,7 +15,7 @@ class Page {
         _(".form__search-bar").value = ""
 
         if(value) {
-            fetch(`${this.searchUrl}?q=${value.toLowerCase()}`)
+            fetch(`${this.searchUrl}&q=${value.toLowerCase()}`)
             .then(response => response.json())
             .then(data => {
                 this.searchData = [...data.items]
@@ -45,15 +45,31 @@ class Page {
         }
     }
 
-    getUserInfo(index) {
+    async getUserInfo(index) {
         const user = page.searchData[index]
-        this.searchContent = _(".main__search").innerHTML
+
+        const reposResp = await fetch(`https://api.github.com/users/${user.login.toLowerCase()}/repos?client_id=537eb1ccd6cf3d86e0dd&secret_id=ed69e0ea1b0c18f1fff0f079bff42f0f72fbea09&per_page=100`);
+        const repos = await reposResp.json();
+
 
         _(".main__user").innerHTML = `
-        <img src="${user.avatar_url}" alt=""/>
-        <h1>${user.login}</h1>
-        <a href="${user.html_url}">User</a>
-        <button id="back">Go back</button>`
+        <button id="back"><i class="fas fa-arrow-left"></i></button>
+        <div class="head">
+            <div class="head__img-wrapper">
+                <img class="head__img" src="${user.avatar_url}" alt="">
+                <p class="head__name">${user.login}</p>
+                <button class="head__button" onclick="document.location.href='${user.html_url}'">Go to Github</button>
+            </div>
+            <div class="head__status">
+                <ul>
+                    <li><strong>Type:</strong> ${user.type}</li>
+                    <li><strong>Repos:</strong> ${repos.length}</li>
+                </ul>
+            </div>
+        </div>
+        <h2 class="repo-title">Repos</h2>
+        <div class="repos"></div>
+        `
 
         _(".main__user").classList.add("show")
         _('.main__search').classList.add("hide")
@@ -62,6 +78,29 @@ class Page {
             _(".main__user").classList.remove("show")
             _('.main__search').classList.remove("hide")
         } 
+
+
+        repos.forEach(item => {
+            const block = document.createElement("section")
+            let content
+
+            if(item.language !== null) {
+                content = `
+                <a href="${item.html_url}">${item.name}</a>
+                <p>${item.language}</p>`
+            } else {
+                content = `<a href="${item.html_url}">${item.name}</a>`
+            }
+
+            block.classList.add("repo")
+            block.innerHTML = content
+
+            _(".repos").appendChild(block)
+        })
+
+
+
+
     }
 }
 
