@@ -175,13 +175,12 @@ button, a, input:focus {
 .result {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-column-gap: 20px;
     grid-row-gap: 30px;
     justify-items: center;
     &__section {
         background: red;
-        min-width: 240px;
         width: 100%;
         background: #313131;
         display: flex;
@@ -293,5 +292,90 @@ button, a, input:focus {
     i {
         font-size: 2vw;
         color: #ca3e47;
+    }
+}
+
+
+@media (max-width: 850px) {
+    .result {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .header {
+        position: static;
+        height: 60px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-right: 0;
+        border-bottom: 3px solid #ca3e47;
+        padding: 0 10px;
+        &__logo {
+            height: 90%;
+            width: initial;
+            margin: 0;
+        }
+        .media {
+            margin: 0;
+            width: 95px;
+            i {
+                font-size: 26px;
+            }
+        }
+    }
+    .main {
+        position: static;
+        width: initial;
+    }
+
+    .head{
+        flex-direction: column;
+        align-items: center;
+        &__img-wrapper{
+            width: 65%;
+            margin-bottom: 15px;
+        }
+        &__name {
+            font-size: 20px;
+        }
+        ul {
+            li, strong {
+                font-size: 17px;
+            }
+        }
+        &__button {
+            font-size: 19px;
+        }
+    }
+
+    .repo-title {
+        font-size: 25px;
+    }
+    .repo {
+        a, p {
+            font-size: 17px;
+        }
+    }
+    #back {
+        font-size: 19px;
+    }
+}
+
+@media (max-width: 500px) {
+    .result {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .main .form {
+        width: 100% !important;
+        i {
+            padding: 0 1px;
+            font-size: 17px;
+        }
+        input {
+            width: 100% i !important;
+        }
     }
 }
